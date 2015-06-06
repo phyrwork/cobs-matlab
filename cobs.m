@@ -11,7 +11,11 @@ function output = cobs(input)
         output(end+1) = code;
         if code > 1
             output(end+1:end+code-1) = input(1:code-1);
-            input(1:code-1) = [];
+            try
+                input(1:code) = [];
+            catch
+                return;
+            end
         else
             input(1) = [];
         end 
